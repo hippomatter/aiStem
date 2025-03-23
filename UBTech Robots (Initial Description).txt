@@ -1,0 +1,20 @@
+cruzr_description = """
+CRUZR is a cloud-based intelligent commercial service robot designed for interactive tasks. 
+It features AI-powered interaction, autonomous navigation, facial recognition, and customizable applications. 
+It is ideal for environments like retail, hospitality, and education.
+Students can learn about NLP, computer vision, and cloud computing.
+"""
+
+welli_description = """
+WELLI is a smart companion robot designed for healthcare and companionship. 
+It supports voice and gesture interaction, emotional expression, and remote monitoring. 
+It is suitable for healthcare facilities, homes, and educational settings.
+Students can explore gesture recognition, emotional expression, and remote monitoring.
+"""
+
+aucari_description = """
+AUCARI is an open shelf delivery robot designed for autonomous delivery tasks. 
+It features SLAM navigation, multi-robot collaboration, and customizable workflows. 
+It is ideal for environments like warehouses, hospitals, and schools.
+Students can learn about SLAM, autonomous navigation, and workflow optimization.
+"""

@@ -1,0 +1,21 @@
+
+project_root$ cd htmlwebapp
+project_root/htmlwebapp$ firebase init 
+
+firebase > select hosting : configure files ... ()
+firebase > use existing project
+firebase > What ... public directory?     public
+firebase > Config ... single-page app ()? Yes
+firebase > Set up ... Github?             No
+firebase > File ... Overwrite?            No No No 
+
+
+project_root/htmlwebapp$ firebase login:add xxx@gmail.com
+
+project_root/htmlwebapp$ firebase deploy --only hosting
+or
+project_root/htmlwebapp$ npx http-server public -p 8080
+or
+project_root/htmlwebapp$ cd public
+                         npx http-server -p 8080
+

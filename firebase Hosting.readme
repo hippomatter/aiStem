@@ -1,0 +1,30 @@
+project_root$ create-react-app <reactwebapp_project>
+project_root$ cd react_project
+
+reactwebapp_project$ npm install -g firebase-tools
+reactwebapp_project$ firebase init 
+
+firebase > select hosting : configure files ... ()
+firebase > use existing project
+firebase > What ... public directory?     build
+firebase > Config ... single-page app ()? Yes
+firebase > Set up ... Github?             No
+firebase > File ... Overwrite?            No No No 
+
+Specify your site in firebase.json
+{
+  "hosting": {
+    "site": "quantumeum-hash",
+
+    "public": "public",
+    ...
+  }
+}
+
+
+firebase login:add xxx@gmail.com
+firebase login:use xxx@gmail.com
+
+reactwebapp_project$ firebase deploy --only hosting:quantumeum-hash
+or
+reactwebapp_project$ npm start (for simulation)

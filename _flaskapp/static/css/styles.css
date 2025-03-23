@@ -1,0 +1,12 @@
+.robot-card {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.robot-card:hover {
+    transform: scale(1.05);
+}
+
+.robot-card.selected {
+    border: 2px solid #007bff;
+}

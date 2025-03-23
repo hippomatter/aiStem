@@ -1,0 +1,40 @@
+### if react is not yet downloaded from npm
+
+$ cd PROJECT_ROOT
+PROJECT_ROOT$ npm i -g create-react-app
+PROJECT_ROOT$ sudo npm update
+PROJECT_ROOT$ npm install react-scripts
+
+### create react project_dir
+
+PROJECT_ROOT$ create-react-app {webapp_dir}
+e.g. create-react-app reactwebapp
+
+### app.js
+
+Replace the contents of src/App.js
+Ensure src/index.js is importing and rendering the App component correctly.
+
+### run react app locally
+
+PROJECT_ROOT$ cd {webapp_dir}
+PROJECT_ROOT/{webapp_dir}$ npm start
+
+React project starts at localhost:30000
+
+### or install firebase tools
+
+###
+
+*** in case of error:0308010C:digital envelope routines::unsupported
+    1. npm install webpack@latest
+    2. add to package.json with "scripts": {"start": "react-scripts start --openssl-legacy-provider"}
+    3. npm install react-scripts@5
+*** ref: https://sebhastian.com/error-0308010c-digital-envelope-routines-unsupported/
+
+### Referecnce:
+
+https://www.youtube.com/watch?v=Tcu6WiD_YC0
+https://solidity-by-example.org/app/multi-sig-wallet/
+
+

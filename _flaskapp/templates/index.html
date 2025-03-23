@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aiSTEM Robot Prompts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="bg-light py-4">
+        <div class="container">
+            <img src="{{ url_for('static', filename='images/aiSTEM_Logo.png') }}" alt="aiSTEM Logo" class="img-fluid">
+        </div>
+    </header>
+
+    <div class="container my-5">
+        <!-- Section 1: Welcome -->
+        <section id="section-1" class="text-center">
+            <h1>Welcome to aiSTEM Robot Prompts!</h1>
+            <p>This app helps you learn AI prompt engineering for robot tasks. Get ready to explore CRUZR, WELLI, and AUCARI!</p>
+            <button class="btn btn-primary" onclick="startApp()">Start</button>
+        </section>
+
+        <!-- Section 2: Select Robot -->
+        <section id="section-2" class="d-none">
+            <h2 class="text-center mb-4">Select a Robot</h2>
+            <div class="row">
+                {% for robot_name, robot in robots.items() %}
+                <div class="col-md-4 mb-4">
+                    <div class="card robot-card" onclick="selectRobot('{{ robot_name }}')">
+                        <img src="{{ url_for('static', filename='images/' + robot.image) }}" class="card-img-top" alt="{{ robot.name }}">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ robot.name }}</h3>
+                            <p class="card-text">{{ robot.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Section 3: Enter Task -->
+        <section id="section-3" class="d-none">
+            <h2 class="text-center mb-4">Enter Task for <span id="selected-robot"></span></h2>
+            <div class="input-group mb-3">
+                <input type="text" id="task-input" class="form-control" placeholder="Ask the robot to...">
+                <button class="btn btn-primary" onclick="submitTask()">Submit Task</button>
+            </div>
+        </section>
+
+        <!-- Section 4: AI Response -->
+        <section id="section-4" class="d-none">
+            <h2 class="text-center mb-4">AI Response</h2>
+            <div id="ai-response" class="alert alert-info"></div>
+            <button class="btn btn-secondary" onclick="modifyTask()">Modify Task</button>
+        </section>
+    </div>
+
+    <script>
+        let selectedRobot = null;
+
+        function startApp() {
+            document.getElementById("section-1").classList.add("d-none");
+            document.getElementById("section-2").classList.remove("d-none");
+        }
+
+        function selectRobot(robot) {
+            selectedRobot = robot;
+            document.getElementById("section-2").classList.add("d-none");
+            document.getElementById("section-3").classList.remove("d-none");
+            document.getElementById("selected-robot").innerText = robot;
+        }
+
+        async function submitTask() {
+            const task = document.getElementById("task-input").value;
+            if (!task.trim()) return;
+
+            document.getElementById("section-3").classList.add("d-none");
+            document.getElementById("section-4").classList.remove("d-none");
+            document.getElementById("ai-response").innerText = "AI is thinking...";
+
+            const response = await fetch("/ask", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ robot: selectedRobot, task }),
+            });
+
+            const data = await response.json();
+            document.getElementById("ai-response").innerText = data.response;
+        }
+
+        function modifyTask() {
+            document.getElementById("section-4").classList.add("d-none");
+            document.getElementById("section-3").classList.remove("d-none");
+        }
+    </script>
+</body>
+</html>

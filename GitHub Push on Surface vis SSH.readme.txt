@@ -1,0 +1,20 @@
+GitHub Push on Surface WSL vis SSH
+
+Generate SSH Key (if not already created):
+# ssh-keygen -t ed25519 -C "your-email@example.com"
+Your public key has been saved in /root/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:ylyqHexrFz98sw382TDjOKPtNdTnyDHSKhWWoTwrm6I hippomatter@gmail.com
+Add SSH Key to GitHub:
+Copy the public key:
+cat ~/.ssh/id_ed25519.pub
+Go to GitHub SSH Settings.
+Click "New SSH Key", paste the key, and give it a title.
+
+Update Remote URL to Use SSH:
+# git add .
+# git commit -m ""
+OPTIONAL # git branch -M main
+# git remote set-url origin git@github.com:hippomatter/ironCap.git
+# ssh -T git@github.com
+# git push -u origin main
