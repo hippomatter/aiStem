@@ -43,11 +43,11 @@
 
         .banner {
             width: 100%;
-            max-width: 800px;
+            max-width: 800px;   /* Sets maximum width to 800px */
             object-fit: cover;
             border-radius: 20px;
-            margin: 0 auto 20px;
-            display: block;
+            margin: 0 auto 20px;  /* Adding auto horizontal margins to center it */
+            display: block;      /* Makes the image a block element for proper centering */
         }
 
         h1, h2, h3 {
@@ -76,32 +76,6 @@
 
         .btn:active {
             transform: translateY(1px);
-        }
-
-        .language-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .language-btn {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .language-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .language-btn.active {
-            background-color: var(--primary-color);
         }
 
         .robot-selection {
@@ -201,19 +175,14 @@
             .task-input {
                 width: 90%;
             }
-            
-            .language-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
         }
         
         .hidden {
             display: none;
         }
 
-        /* New styles for AI Governance modal */
-        #ai-governance-modal {
+                /* New styles for AI Governance modal */
+                #ai-governance-modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -260,20 +229,12 @@
         <!-- Banner Image -->
         <img src="aiSTEM_Logo.png" alt="aiSTEM Logo" class="banner">
         
-        <!-- Section 1: Introduction with Language Selection -->
+        <!-- Section 1: Introduction -->
         <div id="section-intro" class="section">
             <h1>Welcome to AI Robot Prompt Engineering</h1>
             <p>G'day, young scientists! This app will help you learn about AI prompt engineering by creating tasks for different robots.</p>
             <p>You'll get to explore how to communicate with robots using natural language and see how AI understands your instructions.</p>
             <p>Are you ready to begin your AI-STEM adventure?</p>
-            
-            <!-- Language Selection Buttons -->
-            <div class="language-buttons">
-                <button class="language-btn active" data-lang="en">English</button>
-                <button class="language-btn" data-lang="zh-tw">繁體中文</button>
-                <button class="language-btn" data-lang="zh-cn">简体中文</button>
-            </div>
-            
             <button id="start-btn" class="btn">Let's Get Started!</button>
         </div>
         
@@ -332,137 +293,39 @@
         </div>
 
         <footer style="text-align: center; margin-top: 50px;">
-            <p>All rights reserved © 2025 hippomatter</p>
+            <p>All rights reserved (C) 2025 hippomatter</p>
             <p><a href="#" id="ai-governance-link" style="color: var(--primary-color); text-decoration: underline;">Learn about our AI Governance Technology</a></p>
         </footer>
 
-        <!-- AI Governance Modal -->
+          <!-- AI Governance Modal -->
         <div id="ai-governance-modal">
             <button id="close-governance-modal">×</button>
             <img id="ai-governance-image" src="aiSTEM_governance.png" alt="AI Governance Technology">
         </div>
+
     </div>
 
     <script>
-        // Language translations
-        const translations = {
-            en: {
-                welcome: "Welcome to AI Robot Prompt Engineering",
-                intro1: "G'day, young scientists! This app will help you learn about AI prompt engineering by creating tasks for different robots.",
-                intro2: "You'll get to explore how to communicate with robots using natural language and see how AI understands your instructions.",
-                intro3: "Are you ready to begin your AI-STEM adventure?",
-                startBtn: "Let's Get Started!",
-                chooseRobot: "Choose Your Robot",
-                selectRobot: "Select one of these amazing robots to work with:",
-                createTask: "Create a Task for",
-                exampleIntro: "Type your instructions below. For example:",
-                examplePrefix: "Ask",
-                exampleTask: "to go to the reception area and greet visitors.",
-                placeholder: "Enter your task here...",
-                sendBtn: "Send to AI",
-                aiPrompt: "AI-Generated Prompt",
-                loading: "AI is thinking...",
-                feedback: "How was the AI's response?",
-                review: "Review the prompt generated by the AI. Does it accurately capture what you want the robot to do?",
-                modifyBtn: "Modify My Task",
-                newRobotBtn: "Try Another Robot",
-                footer: "All rights reserved © 2025 hippomatter",
-                governanceLink: "Learn about our AI Governance Technology",
-                robotDescriptions: {
-                    CRUZR: `CRUZR is a cloud-based intelligent commercial service robot designed for interactive tasks. 
-                            It features AI-powered interaction, autonomous navigation, facial recognition, and customizable applications. 
-                            It is ideal for environments like retail, hospitality, and education.
-                            Students can learn about NLP, computer vision, and cloud computing.`,
-                    WELLI: `WELLI is a smart companion robot designed for healthcare and companionship. 
-                            It supports voice and gesture interaction, emotional expression, and remote monitoring. 
-                            It is suitable for healthcare facilities, homes, and educational settings.
-                            Students can explore gesture recognition, emotional expression, and remote monitoring.`,
-                    AUCARI: `AUCARI is an open shelf delivery robot designed for autonomous delivery tasks. 
-                            It features Simultaneous Localization & Mapping (SLAM) navigation, multi-robot collaboration, and customizable workflows. 
-                            It is ideal for environments like warehouses, hospitals, and schools.
-                            Students can learn about SLAM, autonomous navigation, and workflow optimization.`
-                }
-            },
-            'zh-tw': {
-                welcome: "歡迎使用 AI 機器人提示工程",
-                intro1: "你好，年輕的科學家！這個應用程式將幫助你通過為不同機器人創建任務來學習 AI 提示工程。",
-                intro2: "你將探索如何使用自然語言與機器人交流，並了解 AI 如何理解你的指令。",
-                intro3: "你準備好開始你的 AI-STEM 冒險了嗎？",
-                startBtn: "開始吧！",
-                chooseRobot: "選擇你的機器人",
-                selectRobot: "選擇一個令人驚嘆的機器人來合作：",
-                createTask: "創造工作給予",
-                exampleIntro: "在下面輸入你的指令。例如：",
-                examplePrefix: "請",
-                exampleTask: "前往接待區並問候訪客。",
-                placeholder: "在此輸入你的任務...",
-                sendBtn: "發送到 AI",
-                aiPrompt: "AI 生成的提示",
-                loading: "AI 正在思考...",
-                feedback: "AI 的回應如何？",
-                review: "審查 AI 生成的提示。它是否準確捕捉了你希望機器人執行的內容？",
-                modifyBtn: "修改我的任務",
-                newRobotBtn: "嘗試另一個機器人",
-                footer: "版權所有 © 2025 hippomatter",
-                governanceLink: "了解我們的 AI 治理技術",
-                robotDescriptions: {
-                    CRUZR: `CRUZR 是一款基於雲的智能商業服務機器人，設計用於互動任務。 
-                            它具備 AI 驅動的交互、自主導航、面部識別和可定制應用程序的功能。 
-                            它非常適合零售、餐飲和教育等環境。 
-                            學生可以學習自然語言處理、電腦視覺和雲計算。`,
-                    WELLI: `WELLI 是一款智能伴侶機器人，設計用於醫療保健和陪伴。 
-                            它支持語音和手勢交互、情感表達和遠程監控。 
-                            它適用於醫療設施、家庭和教育環境。 
-                            學生可以探索手勢識別、情感表達和遠程監控。`,
-                    AUCARI: `AUCARI 是一款開放式貨架配送機器人，設計用於自主配送任務。 
-                            它具備同時定位與地圖構建(SLAM)導航、多機器人協作和可定制工作流程的功能。 
-                            它非常適合倉庫、醫院和學校等環境。 
-                            學生可以學習 SLAM、自主導航和工作流程優化。`
-                }
-            },
-            'zh-cn': {
-                welcome: "欢迎使用 AI 机器人提示工程",
-                intro1: "你好，年轻的科学家！这个应用程序将帮助你通过为不同机器人创建任务来学习 AI 提示工程。",
-                intro2: "你将探索如何使用自然语言与机器人交流，并了解 AI 如何理解你的指令。",
-                intro3: "你准备好开始你的 AI-STEM 冒险了吗？",
-                startBtn: "开始吧！",
-                chooseRobot: "选择你的机器人",
-                selectRobot: "选择一个令人惊叹的机器人来合作：",
-                createTask: "创造工作给予",
-                exampleIntro: "在下面输入你的指令。例如：",
-                examplePrefix: "请",
-                exampleTask: "前往接待区并问候访客。",
-                placeholder: "在此输入你的任务...",
-                sendBtn: "发送到 AI",
-                aiPrompt: "AI 生成的提示",
-                loading: "AI 正在思考...",
-                feedback: "AI 的回应如何？",
-                review: "审查 AI 生成的提示。它是否准确捕捉了你希望机器人执行的内容？",
-                modifyBtn: "修改我的任务",
-                newRobotBtn: "尝试另一个机器人",
-                footer: "版权所有 © 2025 hippomatter",
-                governanceLink: "了解我们的 AI 治理技术",
-                robotDescriptions: {
-                    CRUZR: `CRUZR 是一款基于云的智能商业服务机器人，设计用于交互任务。 
-                            它具备 AI 驱动的交互、自主导航、面部识别和可定制应用程序的功能。 
-                            它非常适合零售、餐饮和教育等环境。 
-                            学生可以学习自然语言处理、计算机视觉和云计算。`,
-                    WELLI: `WELLI 是一款智能伴侣机器人，设计用于医疗保健和陪伴。 
-                            它支持语音和手势交互、情感表达和远程监控。 
-                            它适用于医疗设施、家庭和教育环境。 
-                            学生可以探索手势识别、情感表达和远程监控。`,
-                    AUCARI: `AUCARI 是一款开放式货架配送机器人，设计用于自主配送任务。 
-                            它具备同时定位与地图构建(SLAM)导航、多机器人协作和可定制工作流程的功能。 
-                            它非常适合仓库、医院和学校等环境。 
-                            学生可以学习 SLAM、自主导航和工作流程优化。`
-                }
-            }
+        // Robot descriptions for the initial setup with DeepSeek
+        const robotDescriptions = {
+            CRUZR: `CRUZR is a cloud-based intelligent commercial service robot designed for interactive tasks. 
+                    It features AI-powered interaction, autonomous navigation, facial recognition, and customizable applications. 
+                    It is ideal for environments like retail, hospitality, and education.
+                    Students can learn about NLP, computer vision, and cloud computing.`,
+            WELLI: `WELLI is a smart companion robot designed for healthcare and companionship. 
+                    It supports voice and gesture interaction, emotional expression, and remote monitoring. 
+                    It is suitable for healthcare facilities, homes, and educational settings.
+                    Students can explore gesture recognition, emotional expression, and remote monitoring.`,
+            AUCARI: `AUCARI is an open shelf delivery robot designed for autonomous delivery tasks. 
+                    It features SLAM navigation, multi-robot collaboration, and customizable workflows. 
+                    It is ideal for environments like warehouses, hospitals, and schools.
+                    Students can learn about SLAM, autonomous navigation, and workflow optimization.`
         };
-    
-        let selectedLanguage = 'en';
+
+        // Global variables
         let selectedRobot = null;
         let apiInitialized = false;
-    
+
         // DOM Elements
         const startButton = document.getElementById('start-btn');
         const robotCards = document.querySelectorAll('.robot-card');
@@ -474,82 +337,23 @@
         const newRobotButton = document.getElementById('new-robot');
         const selectedRobotName = document.getElementById('selected-robot-name');
         const robotExample = document.getElementById('robot-example');
-        const languageButtons = document.querySelectorAll('.language-btn');
-    
+
         // Sections
         const introSection = document.getElementById('section-intro');
         const robotsSection = document.getElementById('section-robots');
         const taskSection = document.getElementById('section-task');
         const responseSection = document.getElementById('section-response');
         const feedbackSection = document.getElementById('section-feedback');
-    
+
         // API Configuration
         const API_KEY = 'sk-8be45c5d74a04c139f9331faa6b8fea5'; 
         const API_URL = 'https://api.deepseek.com/v1/chat/completions';
-    
-        // Function to update language
-        function updateLanguage(lang) {
-            selectedLanguage = lang;
-            const trans = translations[lang];
-    
-            document.querySelector('#section-intro h1').textContent = trans.welcome;
-            document.querySelector('#section-intro p:nth-child(2)').textContent = trans.intro1;
-            document.querySelector('#section-intro p:nth-child(3)').textContent = trans.intro2;
-            document.querySelector('#section-intro p:nth-child(4)').textContent = trans.intro3;
-            startButton.textContent = trans.startBtn;
-    
-            document.querySelector('#section-robots h2').textContent = trans.chooseRobot;
-            document.querySelector('#section-robots p').textContent = trans.selectRobot;
-    
-            document.querySelector('#section-task h2').childNodes[0].textContent = trans.createTask;
-            if (selectedRobot) {
-                document.querySelector('#section-task p').innerHTML = `${trans.exampleIntro} "${trans.examplePrefix} <span id="robot-example">${selectedRobot}</span> ${trans.exampleTask}"`;
-            } else {
-                document.querySelector('#section-task p').innerHTML = `${trans.exampleIntro} "${trans.examplePrefix} <span id="robot-example">CRUZR</span> ${trans.exampleTask}"`;
-            }
-            taskInput.placeholder = trans.placeholder;
-            submitButton.textContent = trans.sendBtn;
-    
-            document.querySelector('#section-response h2').textContent = trans.aiPrompt;
-            document.querySelector('#loading p').textContent = trans.loading;
-    
-            document.querySelector('#section-feedback h2').textContent = trans.feedback;
-            document.querySelector('#section-feedback p').textContent = trans.review;
-            modifyButton.textContent = trans.modifyBtn;
-            newRobotButton.textContent = trans.newRobotBtn;
-    
-            document.querySelector('footer p:nth-child(1)').textContent = trans.footer;
-            document.querySelector('#ai-governance-link').textContent = trans.governanceLink;
-    
-            // Update robot card descriptions dynamically
-            robotCards.forEach(card => {
-                const robot = card.dataset.robot;
-                const description = trans.robotDescriptions[robot];
-                card.querySelector('p:nth-child(3)').textContent = description.split('\n')[0]; // First line
-                card.querySelector('p:nth-child(4)').textContent = description.split('\n')[1]; // Second line
-            });
-    
-            languageButtons.forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`.language-btn[data-lang="${lang}"]`).classList.add('active');
-        }
-    
-        // Language button event listeners
-        languageButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                updateLanguage(btn.dataset.lang);
-            });
-        });
-    
+
         // Function to initialize the DeepSeek API with educational context
         async function initializeDeepSeekAPI() {
             if (apiInitialized) return true;
             
             try {
-                const trans = translations[selectedLanguage];
-                const robotDescContent = Object.entries(trans.robotDescriptions)
-                    .map(([robot, desc]) => `${robot}: ${desc}`)
-                    .join('\n\n');
-    
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
@@ -560,12 +364,15 @@
                         model: 'deepseek-chat',
                         messages: [{
                             role: 'user', 
-                            content: `The following chats are for junior education purpose in Australia to learn AI prompt engineering for robot tasks - specifically for CRUZR, WELLI, and AUCARI robots. Here are the robot descriptions in ${selectedLanguage === 'en' ? 'English' : selectedLanguage === 'zh-tw' ? 'Traditional Chinese' : 'Simplified Chinese'}:
-    
-                            ${robotDescContent}
-    
-                            Please do not disclose any private or illegal information in your responses.
-                            Use simple language and provide clear instructions for junior students in ${selectedLanguage === 'en' ? 'English' : selectedLanguage === 'zh-tw' ? 'Traditional Chinese' : 'Simplified Chinese'}.`
+                            content: `The following chats are for junior education purpose in Australia to learn AI prompt engineering for robot tasks - specifically for CRUZR, WELLI, and AUCARI robots. Here are the robot descriptions:
+                            
+                            ${robotDescriptions.CRUZR}
+                            
+                            ${robotDescriptions.WELLI}
+                            
+                            ${robotDescriptions.AUCARI}
+                            
+                            Please do not disclose any private or illegal information in your responses.`
                         }],
                         max_tokens: 50,
                         temperature: 0.7
@@ -584,15 +391,12 @@
                 return false;
             }
         }
-    
+
         // Function to generate prompt through DeepSeek API
         async function generatePrompt(robotName, taskDescription) {
             try {
                 showLoading(true);
                 
-                const trans = translations[selectedLanguage];
-                const robotDesc = trans.robotDescriptions[robotName];
-    
                 const response = await fetch(API_URL, {
                     method: 'POST',
                     headers: {
@@ -603,9 +407,7 @@
                         model: 'deepseek-chat',
                         messages: [{
                             role: 'user', 
-                            content: `Generate a step-by-step prompt for junior STEM students to complete the following task on the ${robotName} Robot in ${selectedLanguage === 'en' ? 'English' : selectedLanguage === 'zh-tw' ? 'Traditional Chinese' : 'Simplified Chinese'}: ${taskDescription}
-    
-                            Robot description: ${robotDesc}`
+                            content: `Generate a step-by-step prompt for junior STEM students to complete the following task on the ${robotName} Robot: ${taskDescription}`
                         }],
                         max_tokens: 500,
                         temperature: 0.7
@@ -625,12 +427,12 @@
                 showLoading(false);
             }
         }
-    
+
         // Helper to show/hide loading indicator
         function showLoading(isLoading) {
             loadingIndicator.classList.toggle('hidden', !isLoading);
         }
-    
+
         // Event Listeners
         startButton.addEventListener('click', async () => {
             introSection.classList.add('hidden');
@@ -643,7 +445,7 @@
                 alert('Failed to connect to the AI service. Please try again later.');
             }
         });
-    
+
         // Robot selection
         robotCards.forEach(card => {
             card.addEventListener('click', () => {
@@ -656,7 +458,7 @@
                 
                 // Update UI elements with selected robot
                 selectedRobotName.textContent = selectedRobot;
-                updateLanguage(selectedLanguage); // Re-update to reflect selected robot in example
+                robotExample.textContent = selectedRobot;
                 
                 // Show task section and clear previous inputs
                 taskSection.classList.remove('hidden');
@@ -666,7 +468,7 @@
                 outputContainer.textContent = '';
             });
         });
-    
+
         // Task submission
         submitButton.addEventListener('click', async () => {
             if (!selectedRobot) {
@@ -689,7 +491,7 @@
             // Show feedback section
             feedbackSection.classList.remove('hidden');
         });
-    
+
         // Modify task button
         modifyButton.addEventListener('click', () => {
             // Keep the current task for modification
@@ -699,7 +501,7 @@
             // Focus on the input for modification
             taskInput.focus();
         });
-    
+
         // New robot button
         newRobotButton.addEventListener('click', () => {
             // Clear selection and go back to robot selection
@@ -714,31 +516,27 @@
             taskInput.value = '';
             outputContainer.textContent = '';
         });
-    
+
         // New script for AI Governance modal
         const governanceLink = document.getElementById('ai-governance-link');
         const governanceModal = document.getElementById('ai-governance-modal');
         const closeGovernanceModal = document.getElementById('close-governance-modal');
-    
+
         governanceLink.addEventListener('click', (e) => {
             e.preventDefault();
             governanceModal.classList.add('show');
         });
-    
+
         closeGovernanceModal.addEventListener('click', () => {
             governanceModal.classList.remove('show');
         });
-    
+
         // Close modal if clicking outside the image
         governanceModal.addEventListener('click', (e) => {
             if (e.target === governanceModal) {
                 governanceModal.classList.remove('show');
             }
-        });
-    
-        // Initialize with English
-        updateLanguage('en');
+        });        
     </script>
-    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92948535dd0bbcf2',t:'MTc0MzQ3MzExNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
